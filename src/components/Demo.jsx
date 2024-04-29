@@ -4,12 +4,14 @@ import { useLazyGetSummaryQuery } from "../services/article";
 
 const Demo = () => {
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
+ 
+  const [articleHistory, setArticleHistory] = useState([]);
+  const [copied, setCopied] = useState('')
   const [article, setArticle] = useState({
     url: "",
     summary: "",
   });
-  const [articleHistory, setArticleHistory] = useState([]);
-  const [copied, setCopied] = useState('')
+ 
 
   useEffect(() => {
     const articlesFromLocalStorage = JSON.parse(
@@ -17,8 +19,6 @@ const Demo = () => {
     );
 
     if (articlesFromLocalStorage && articlesFromLocalStorage.length > 0) {
-      const lastArticle = articlesFromLocalStorage[0];
-      setArticle(lastArticle);
       setArticleHistory(articlesFromLocalStorage);
     }
   }, []);
@@ -36,6 +36,7 @@ const Demo = () => {
 
       localStorage.setItem("articles", JSON.stringify(updateArticleHistory));
     }
+    setArticle((prevState) => ({...prevState, url: ''}))
   };
 
   const handleCopy = (copyUrl) => {
@@ -58,7 +59,7 @@ const Demo = () => {
           />
           <input
             type="url"
-            placeholder="Enter a URL..."
+            placeholder="Paste a Url..."
             value={article.url}
             className="url_input peer"
             onChange={(e) => setArticle({ ...article, url: e.target.value })}
