@@ -1,6 +1,6 @@
 # Description
 
-RapidSum is a simple web application that leverages advanced AI technology to summarize articles from URLs. Users can paste a URL into the application, and it will utilize the Article Extractor and Summarizer API, powered by GPT, to extract the body of the article and generate a concise summary.
+RapidSum is a simple web application that leverages AI to summarize articles from URLs. Users can paste a URL into the application, and it will utilize the Article Extractor and Summarizer API, powered by GPT, to extract the body of the article and generate a concise summary.
 
 ### Live Demo
 
@@ -8,15 +8,15 @@ RapidSum is a simple web application that leverages advanced AI technology to su
 
 ### Data Flow Overview
 
-- **Index.html**: This file serves as the entry point for the Next.js application, providing the structure for rendering React components and linking necessary stylesheets and scripts.
+- **Index.html**: This file serves as the entry point for the Next.js application.
 
-- **main.jsx**: In this file, we initialize the React application by rendering the `<App />` component. The Redux store is made available to all components through the `<Provider>` component from React-Redux.
+- **main.jsx**: In this file, we initialize the React application by rendering the `<App />` component.
 
-- **App.jsx**: The `<App />` component acts as the main container for our application. It renders two primary components: `<Hero />`, which represents the hero section with branding and description, and `<Demo />`, which handles the core functionality of the app.
+- **App.jsx**: The `<App />` component acts as the main container for our application.
 
-- **Hero.jsx**: This component displays the branding and description of the application. It doesn't interact with Redux or fetch data from the API directly.
+- **Hero.jsx**: This component displays the branding and description of the application.
 
-- **Demo.jsx**: Here lies the core functionality of our application. Users can input a URL, triggering an API call to fetch and summarize the article content. The component interacts with Redux using the `useLazyGetSummaryQuery` hook from the `articleApi` service to fetch data from the RapidAPI endpoint. Additionally, it utilizes local storage to store and retrieve article history.
+- **Demo.jsx**: Here lies the core functionality of the application. Users can input a URL, triggering an API call to fetch and summarize the article content. The component interacts with Redux using the `useLazyGetSummaryQuery` hook from the `articleApi` service to fetch data from the RapidAPI endpoint. Additionally, it utilizes local storage to store and retrieve article history.
 
 - **store.js** and **article.js**: These files configure the Redux store and define API slices using Redux Toolkit. They handle the state management for fetching article summaries from the RapidAPI endpoint, allowing seamless integration of API requests into our application.
 
